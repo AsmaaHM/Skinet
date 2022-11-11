@@ -90,3 +90,11 @@ C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.Exten
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll

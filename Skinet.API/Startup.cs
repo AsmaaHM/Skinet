@@ -15,6 +15,9 @@ using Microsoft.EntityFrameworkCore;
 using Skinet.Infrastructure;
 using Core.Interfaces;
 using Skinet.API.Helpers;
+using Skinet.API.Middleware;
+using Skinet.API.Errors;
+using Skinet.API.Extensions;
 
 namespace Skinet.API
 {
@@ -32,25 +35,22 @@ namespace Skinet.API
 		{
 
 			services.AddControllers();
-			services.AddSwaggerGen(c =>
-			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Skinet.API", Version = "v1" });
-			});
 			services.AddDbContext<SkinetContext>(x => x.UseSqlite(Configuration.GetConnectionString("SkinetContext")));
-			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+			services.AddApplicationServices();
+			services.AddSwaggerDocumentation(); 
 			services.AddAutoMapper(typeof(MappingProfiles));
+			
+
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-				app.UseSwagger();
-				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Skinet.API v1"));
-			}
+			// this is for exceptions (ex. null reference)
+			app.UseMiddleware<ExceptionMiddleware>();
+			app.UseSwaggerDocumentation(); 
 
+			app.UseStatusCodePagesWithReExecute("/errors/{0}"); // this is for error codes that aren't explicitly specified in our controllers like 404 error code for non existant pages/Urls
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
