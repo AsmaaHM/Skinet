@@ -30,7 +30,9 @@ namespace Core.Interfaces
             return await ApplySpecification(spec).ToListAsync();
         }
 
-        //Task<int> CountAsync(ISpecification<T> spec);
+        public async Task<int> CountAsync(ISpecification<T> spec) {
+            return await ApplySpecification(spec).CountAsync();
+        }
         //void Add(T entity);
         //void Update(T entity);
         //void Delete(T entity);
