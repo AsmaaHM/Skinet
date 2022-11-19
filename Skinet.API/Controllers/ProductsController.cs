@@ -20,19 +20,19 @@ namespace Skinet.API.Controllers
 	public class ProductsController : BaseApiController
 	{
 		private readonly IGenericRepository<Product> _productsRepo;
-		private readonly IGenericRepository<ProductType> _productTypesRepo;
-		private readonly IGenericRepository<ProductBrand> _productBrandsRepo;
+		private readonly IGenericRepository<ProductBrand> _brandsRepo;
+		private readonly IGenericRepository<ProductType> _typesRepo;
 		private readonly IMapper _mapper;
 
 		public ProductsController(IGenericRepository<Product> productsRepo, 
-			IGenericRepository<ProductBrand> productBrandsRepo, 
-			IGenericRepository<ProductType> productTypesRepo, 
-			IMapper mapper)
+			IGenericRepository<ProductType> typesRepo, 
+			IMapper mapper, 
+			IGenericRepository<ProductBrand> brandsRepo)
 		{
 			_productsRepo = productsRepo;
-			_productTypesRepo = productTypesRepo;
-			_productBrandsRepo = productBrandsRepo;
 			_mapper = mapper;
+			_brandsRepo = brandsRepo;
+			_typesRepo = typesRepo;
 		}
 
 		[HttpGet]
@@ -61,6 +61,20 @@ namespace Skinet.API.Controllers
 				return NotFound(new ApiResponse(404));
 
 			return _mapper.Map<Product, ProductToReturnDto>(product);
+		}
+
+		[HttpGet("brands")]
+		public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetBrands()
+		{
+			var brands = await _productsRepo.ListAllAsync();
+			return Ok(brands);
+		}
+
+		[HttpGet("types")]
+		public async Task<ActionResult<IReadOnlyList<ProductType>>> GetTypes()
+		{
+			var types = await _typesRepo.ListAllAsync();
+			return Ok(types);
 		}
 
 
