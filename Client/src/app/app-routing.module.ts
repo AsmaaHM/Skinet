@@ -7,11 +7,11 @@ import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes = [
   {path: '', component : HomeComponent},
-  {path: 'test-error', component : TestErrorComponent},
-  {path: 'not-found', component : NotFoundComponent},
-  {path: 'server-error', component : ServerErrorComponent},
-  {path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod=> mod.ShopModule)},
-  {path: '*',  redirectTo: '' , pathMatch: 'full'}, 
+  {path: 'test-error', component : TestErrorComponent, data: {breadcrum: 'Test Errors'}},
+  {path: 'not-found', component : NotFoundComponent, data: {breadcrum: 'Server Error'}},
+  {path: 'server-error', component : ServerErrorComponent, data: {breadcrum: 'Not found'}},
+  {path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod=> mod.ShopModule), data: {breadcrum: 'Shop'}},
+  {path: '*',  redirectTo: 'not-found' , pathMatch: 'full'}, 
 
 ];
 
