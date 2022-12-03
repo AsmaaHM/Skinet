@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Skinet.API.Errors;
+using Skinet.Core.Interfaces;
+using Skinet.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,7 @@ namespace Skinet.API.Extensions
 		public static IServiceCollection AddApplicationServices(this IServiceCollection services)
 		{
 			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
+			services.AddScoped<IBasketRepository, BasketRepository>(); 
 			// this is for validation error codes (like when the parameters are not valid)
 			services.Configure<ApiBehaviorOptions>(options =>
 			{

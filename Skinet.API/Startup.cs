@@ -18,6 +18,7 @@ using Skinet.API.Helpers;
 using Skinet.API.Middleware;
 using Skinet.API.Errors;
 using Skinet.API.Extensions;
+using StackExchange.Redis;
 
 namespace Skinet.API
 {
@@ -36,6 +37,11 @@ namespace Skinet.API
 
 			services.AddControllers();
 			services.AddDbContext<SkinetContext>(x => x.UseSqlite(Configuration.GetConnectionString("SkinetContext")));
+			services.AddSingleton<IConnectionMultiplexer>(c =>
+			{
+				var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
+				return ConnectionMultiplexer.Connect(configuration);
+			});
 			services.AddApplicationServices();
 			services.AddSwaggerDocumentation(); 
 			services.AddAutoMapper(typeof(MappingProfiles));

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MpOGjoRyPRuBN7PgOCTWZ6N9wdoIlxTyzP4g80XFohjjhNQoTuCxlq8vzhDvuhHLVTJs+477LKcK41z12cy1ew==",
+  "dgSpecHash": "7bwQmmKwpG+Lry4JFuFfOrOv3+aTB70HiWYbtdJGoqgQTgSEN5xMxbWj2qcouj3Qh5bnwwjQjCIkWAv9nY+D+A==",
   "success": true,
   "projectFilePath": "C:\\Users\\asmaa.arafat\\Desktop\\Skinet\\Skinet.Infrastructure\\Skinet.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -26,13 +26,16 @@
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\asmaa.arafat\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.2\\pipelines.sockets.unofficial.2.2.2.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\sqlitepclraw.provider.dynamic_cdecl\\2.0.4\\sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512",
+    "C:\\Users\\asmaa.arafat\\.nuget\\packages\\stackexchange.redis\\2.6.80\\stackexchange.redis.2.6.80.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
+    "C:\\Users\\asmaa.arafat\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\asmaa.arafat\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
   "logs": []
