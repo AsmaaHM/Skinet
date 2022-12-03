@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Skinet.API.Errors;
 using Skinet.Infrastructure;
@@ -12,6 +13,13 @@ namespace Skinet.API.Controllers
 		public BuggyController(SkinetContext context )
 		{
 			_context = context; 
+		}
+
+		[HttpGet("testauth")]
+		[Authorize]
+		public ActionResult<string> GetSecretText() {
+
+			return "secret stuff";
 		}
 
 		[HttpGet("notfound")]

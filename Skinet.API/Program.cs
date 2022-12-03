@@ -1,11 +1,14 @@
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Skinet.Core.Entities.Identity;
 using Skinet.Infrastructure;
+using Skinet.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +31,12 @@ namespace Skinet.API
                 var context = services.GetRequiredService<SkinetContext>();
                 await context.Database.MigrateAsync();
                 await SkinetContextSeed.SeedAsync(context, loggerFactory);
+
+                var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+
+                await identityContext.Database.MigrateAsync();
+                await AppIdentityDBContextSeed.SeedUsersAsync(userManager); 
             }
             catch (Exception ex)
             {

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Skinet.API.Dtos;
 using Skinet.Core;
+using Skinet.Core.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Skinet.API.Helpers
 				.ForMember(product => product.Type, dest => dest.MapFrom(source => source.Type.Name))
 				.ForMember(product => product.PictureUrl, dest => dest.MapFrom<ProductUrlResolver>());
 
+			CreateMap<Address, AddressDto>().ReverseMap(); 
 		}
 	}
 }

@@ -19,6 +19,7 @@ using Skinet.API.Middleware;
 using Skinet.API.Errors;
 using Skinet.API.Extensions;
 using StackExchange.Redis;
+using Skinet.Infrastructure.Identity;
 
 namespace Skinet.API
 {
@@ -37,12 +38,14 @@ namespace Skinet.API
 
 			services.AddControllers();
 			services.AddDbContext<SkinetContext>(x => x.UseSqlite(Configuration.GetConnectionString("SkinetContext")));
+			services.AddDbContext<AppIdentityDbContext>(x => x.UseSqlite(Configuration.GetConnectionString("AppIdentityContext")));
 			services.AddSingleton<IConnectionMultiplexer>(c =>
 			{
 				var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
 				return ConnectionMultiplexer.Connect(configuration);
 			});
 			services.AddApplicationServices();
+			services.AddIdentityServices(Configuration); 
 			services.AddSwaggerDocumentation(); 
 			services.AddAutoMapper(typeof(MappingProfiles));
 			services.AddCors(options =>
@@ -71,6 +74,8 @@ namespace Skinet.API
 			app.UseStaticFiles();
 
 			app.UseCors("CorsPolicy");
+
+			app.UseAuthentication();
 
 			app.UseAuthorization();
 
