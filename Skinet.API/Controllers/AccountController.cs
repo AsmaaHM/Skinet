@@ -90,6 +90,12 @@ namespace Skinet.API.Controllers
 		[HttpPost("register")]
 		public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
 		{
+			if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
+				return new BadRequestObjectResult
+					(new ApiValidationErrorResponse 
+					{ Errors = new[] { "Email already exists" } 
+					});
+
 			var user = new AppUser()
 			{
 				Email = registerDto.Email,

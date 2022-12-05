@@ -16,6 +16,22 @@ namespace Skinet.API.Extensions
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Skinet.API", Version = "v1" });
+				var securitySchema = new OpenApiSecurityScheme
+				{
+					Description = "JWT Bearer Scheme",
+					Name = "Authorization",
+					In = ParameterLocation.Header,
+					Type = SecuritySchemeType.Http,
+					Scheme = "Bearer",
+					Reference = new OpenApiReference() {
+						Type = ReferenceType.SecurityScheme, 
+						Id = "Bearer"
+					}
+				};
+				c.AddSecurityDefinition("Bearer", securitySchema);
+				var securityRequirements = new OpenApiSecurityRequirement { { securitySchema, new [] { "Bearer" } } };
+				c.AddSecurityRequirement(securityRequirements);
+			
 			});
 
 			return services;
