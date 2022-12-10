@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Skinet.Core;
+using Skinet.Core.Entities.OrderAggregate;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -24,6 +25,7 @@ namespace Skinet.Infrastructure
                 foreach (var entityType in modelBuilder.Model.GetEntityTypes())
                 {
                     var properties = entityType.ClrType.GetProperties().Where(p => p.PropertyType == typeof(decimal));
+
                     var dateTimeProperties = entityType.ClrType.GetProperties()
                         .Where(p => p.PropertyType == typeof(DateTimeOffset));
 
@@ -45,6 +47,9 @@ namespace Skinet.Infrastructure
 		public DbSet<Product> Products { get; set; }
 		public DbSet<ProductBrand> Brands { get; set; }
 		public DbSet<ProductType> Types { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItemss { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
 
-	}
+    }
 }

@@ -3,6 +3,7 @@ using Skinet.API.Dtos;
 using Skinet.Core;
 using Skinet.Core.Entities;
 using Skinet.Core.Entities.Identity;
+using Skinet.Core.Entities.OrderAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,21 @@ namespace Skinet.API.Helpers
 				.ForMember(product => product.Type, dest => dest.MapFrom(source => source.Type.Name))
 				.ForMember(product => product.PictureUrl, dest => dest.MapFrom<ProductUrlResolver>());
 
-			CreateMap<Address, AddressDto>().ReverseMap();
+			CreateMap<Core.Entities.Identity.Address, AddressDto>().ReverseMap();
 			CreateMap<CustomerBasketDto, CustomerBasket>().ReverseMap();
 			CreateMap<BasketItemDto, BasketItem>().ReverseMap();
+			CreateMap<AddressDto, Core.Entities.OrderAggregate.Address>();
+			
+			CreateMap<Order, OrderToReturnDto>()
+				.ForMember(order=> order.DeliveryMethod, o=> o.MapFrom(s=> s.DeliveryMethod.ShortName))
+				.ForMember(order=> order.ShippingPrice, o=> o.MapFrom(s=> s.DeliveryMethod.Price));
+
+			CreateMap<OrderItem, OrderItemDto>()
+				.ForMember(item => item.ProductId, o => o.MapFrom(s => s.ItemOrdered.ProductItemId))
+				.ForMember(item => item.ProductName, o => o.MapFrom(s => s.ItemOrdered.ProductName))
+				.ForMember(item => item.PictureUrl, o => o.MapFrom(s => s.ItemOrdered.PictureUrl))
+				.ForMember(item => item.PictureUrl, o => o.MapFrom<OrderItemUrlResolver>());
+
 
 		}
 	}

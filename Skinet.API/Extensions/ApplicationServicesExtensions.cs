@@ -18,7 +18,10 @@ namespace Skinet.API.Extensions
 		{
 			services.AddScoped<ITokenService, TokenService>();
 			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-			services.AddScoped<IBasketRepository, BasketRepository>(); 
+			services.AddScoped<IBasketRepository, BasketRepository>();
+			services.AddScoped<IOrderService, OrderService>();
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 			// this is for validation error codes (like when the parameters are not valid)
 			services.Configure<ApiBehaviorOptions>(options =>
 			{
