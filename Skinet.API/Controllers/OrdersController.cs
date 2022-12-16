@@ -51,7 +51,7 @@ namespace Skinet.API.Controllers
 
 		}
 
-		[HttpGet("id")]
+		[HttpGet("{id}")]
 		public async Task<ActionResult<OrderToReturnDto>> GetOrderByIdForUser(int id)
 		{
 

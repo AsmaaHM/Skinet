@@ -19,6 +19,7 @@ const routes: Routes = [
   data: {breadcrum: 'Checkout'}, 
   canActivate: [AuthGuard] },
   {path: 'account', loadChildren: () => import('./account/account.module').then(mod=> mod.AccountModule), data: {breadcrum: {skip: true}}},
+  {path: 'orders', loadChildren: () => import('./orders/orders.module').then(mod=> mod.OrdersModule), data: {breadcrum: 'Orders'},  canActivate: [AuthGuard] },
   {path: '*',  redirectTo: 'not-found' , pathMatch: 'full'}, 
 
 ];
