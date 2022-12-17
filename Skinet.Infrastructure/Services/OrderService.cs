@@ -15,11 +15,13 @@ namespace Skinet.Infrastructure.Services
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IBasketRepository _basketRepo;
+		private readonly IPaymentService _paymentService;
 
-		public OrderService(IUnitOfWork unitOfWork, IBasketRepository basketRepo)
+		public OrderService(IUnitOfWork unitOfWork, IBasketRepository basketRepo, IPaymentService paymentService)
 		{
 			_unitOfWork = unitOfWork;
 			_basketRepo = basketRepo;
+			_paymentService = paymentService;
 		}
 		public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
 		{
@@ -35,14 +37,21 @@ namespace Skinet.Infrastructure.Services
 			var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
 			var subtotal = items.Sum(item => item.Price*item.Quantity);
 
-			var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal);
+			var spec = new OrderByPaymentIntentIdSpecification(basket.PaymentIntentId);
+			var exisitingOrder = await _unitOfWork.Repository<Order>().GetEntityWithSpec(spec);
+			if (exisitingOrder != null)
+			{
+				_unitOfWork.Repository<Order>().Delete(exisitingOrder);
+				await _paymentService.CreateOrUpdatePaymentIntent(basket.PaymentIntentId);
+			}
+
+
+			var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal, basket.PaymentIntentId);
 
 			_unitOfWork.Repository<Order>().Add(order);
 			var result = await _unitOfWork.Complete();
 
 			if (result <= 0) return null;
-
-			await _basketRepo.DeleteBAsketAsync(basketId);
 
 			return order; 
 		}
