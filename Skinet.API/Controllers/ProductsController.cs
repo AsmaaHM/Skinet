@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using API.Helpers;
+using AutoMapper;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -63,6 +64,7 @@ namespace Skinet.API.Controllers
 			return _mapper.Map<Product, ProductToReturnDto>(product);
 		}
 
+		[CachedAttribute(600)]
 		[HttpGet("brands")]
 		public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetBrands()
 		{
@@ -70,6 +72,7 @@ namespace Skinet.API.Controllers
 			return Ok(brands);
 		}
 
+		[CachedAttribute(600)]
 		[HttpGet("types")]
 		public async Task<ActionResult<IReadOnlyList<ProductType>>> GetTypes()
 		{

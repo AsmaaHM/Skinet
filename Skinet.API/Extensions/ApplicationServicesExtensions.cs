@@ -1,4 +1,5 @@
 ﻿using Core.Interfaces;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Skinet.API.Errors;
@@ -16,6 +17,7 @@ namespace Skinet.API.Extensions
 	{
 		public static IServiceCollection AddApplicationServices(this IServiceCollection services)
 		{
+			services.AddSingleton<IResponseCacheService, ResponseCacheService>(); 
 			services.AddScoped<ITokenService, TokenService>();
 			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 			services.AddScoped<IBasketRepository, BasketRepository>();
