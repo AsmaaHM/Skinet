@@ -20,6 +20,8 @@ using Skinet.API.Errors;
 using Skinet.API.Extensions;
 using StackExchange.Redis;
 using Skinet.Infrastructure.Identity;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace Skinet.API
 {
@@ -37,8 +39,8 @@ namespace Skinet.API
 		{
 
 			services.AddControllers();
-			services.AddDbContext<SkinetContext>(x => x.UseSqlite(Configuration.GetConnectionString("SkinetContext")));
-			services.AddDbContext<AppIdentityDbContext>(x => x.UseSqlite(Configuration.GetConnectionString("AppIdentityContext")));
+			services.AddDbContext<SkinetContext>(x => x.UseNpgsql(Configuration.GetConnectionString("SkinetContext")));
+			services.AddDbContext<AppIdentityDbContext>(x => x.UseNpgsql(Configuration.GetConnectionString("AppIdentityContext")));
 			services.AddSingleton<IConnectionMultiplexer>(c =>
 			{
 				var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
@@ -72,6 +74,11 @@ namespace Skinet.API
 			app.UseRouting();
 
 			app.UseStaticFiles();
+			app.UseStaticFiles(new StaticFileOptions() {
+				FileProvider = new PhysicalFileProvider(
+				Path.Combine(Directory.GetCurrentDirectory(), "Content")),
+				RequestPath = "/content"
+			});
 
 			app.UseCors("CorsPolicy");
 
@@ -82,6 +89,7 @@ namespace Skinet.API
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+				endpoints.MapFallbackToController("Index", "Fallback");
 			});
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Skinet.API.Dtos;
 using Skinet.API.Errors;
@@ -21,12 +22,15 @@ namespace Skinet.API.Controllers
 	{
 		private readonly IPaymentService _paymentService;
 		private readonly ILogger<PaymentsController> _logger;
-		private const string WhSecret = "whsec_147fb3f9ab841002957582559e25cb37a2d76513c05f9619c9d6371412c128ae"; 
+		private readonly IConfiguration _configuration;
+		private readonly string _whSecret; 
 
-		public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger)
+		public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger, IConfiguration configuration)
 		{
 			_paymentService = paymentService;
 			_logger = logger;
+			_configuration = configuration;
+			_whSecret = _configuration.GetSection("StripeSettings:WhSecret").Value;
 		}
 
 
@@ -45,7 +49,7 @@ namespace Skinet.API.Controllers
 		{
 
 			var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
-			var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], WhSecret);
+			var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], _whSecret);
 			PaymentIntent intent;
 			Order order;
 

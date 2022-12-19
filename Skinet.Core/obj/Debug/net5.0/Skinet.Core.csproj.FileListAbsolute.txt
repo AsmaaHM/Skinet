@@ -2,7 +2,6 @@ C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\bin\Debug\net5.0\Skinet.Core.de
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\bin\Debug\net5.0\Skinet.Core.dll
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\bin\Debug\net5.0\ref\Skinet.Core.dll
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\bin\Debug\net5.0\Skinet.Core.pdb
-C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\obj\Debug\net5.0\Skinet.Core.csproj.AssemblyReference.cache
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\obj\Debug\net5.0\Skinet.Core.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\obj\Debug\net5.0\Skinet.Core.AssemblyInfoInputs.cache
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\obj\Debug\net5.0\Skinet.Core.AssemblyInfo.cs
@@ -10,3 +9,4 @@ C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\obj\Debug\net5.0\Skinet.Core.cs
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\obj\Debug\net5.0\Skinet.Core.dll
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\obj\Debug\net5.0\ref\Skinet.Core.dll
 C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\obj\Debug\net5.0\Skinet.Core.pdb
+C:\Users\asmaa.arafat\Desktop\Skinet\Skinet.Core\obj\Debug\net5.0\Skinet.Core.csproj.AssemblyReference.cache

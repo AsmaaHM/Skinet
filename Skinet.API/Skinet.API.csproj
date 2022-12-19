@@ -5,13 +5,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Content\images\products\boot-ang1.png" />
+    <Content Include="Content\images\products\boot-ang2.png" />
+    <Content Include="Content\images\products\boot-core1.png" />
+    <Content Include="Content\images\products\boot-core2.png" />
+    <Content Include="Content\images\products\boot-redis1.png" />
+    <Content Include="Content\images\products\glove-code1.png" />
+    <Content Include="Content\images\products\glove-code2.png" />
+    <Content Include="Content\images\products\glove-react1.png" />
+    <Content Include="Content\images\products\glove-react2.png" />
+    <Content Include="Content\images\products\hat-core1.png" />
+    <Content Include="Content\images\products\hat-react1.png" />
+    <Content Include="Content\images\products\hat-react2.png" />
+    <Content Include="Content\images\products\sb-ang1.png" />
+    <Content Include="Content\images\products\sb-ang2.png" />
+    <Content Include="Content\images\products\sb-core1.png" />
+    <Content Include="Content\images\products\sb-core2.png" />
+    <Content Include="Content\images\products\sb-react1.png" />
+    <Content Include="Content\images\products\sb-ts1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
